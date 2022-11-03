@@ -1,0 +1,56 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://icon.png" type="Texture" id=1]
+[ext_resource path="res://Scripts/DialogueBox.gd" type="Script" id=2]
+[ext_resource path="res://Scripts/DialogList.gd" type="Script" id=3]
+
+[node name="Speaker" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DialogueBox" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="DialogueBox"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_scale = Vector2( 1.00155, 1.00293 )
+texture = ExtResource( 1 )
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="DialogueBox"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 2.0
+margin_top = 3.0
+margin_right = -760.0
+margin_bottom = -558.0
+rect_scale = Vector2( 3.88163, 4.18047 )
+bbcode_enabled = true
+bbcode_text = "Sup bitches."
+text = "Sup bitches."
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tween" type="Tween" parent="DialogueBox"]
+
+[node name="Ind" type="Sprite" parent="DialogueBox"]
+modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 750.5, 218 )
+scale = Vector2( 0.47247, 0.395833 )
+texture = ExtResource( 1 )
+
+[connection signal="tween_completed" from="DialogueBox/Tween" to="DialogueBox" method="_on_Tween_tween_completed"]

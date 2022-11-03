@@ -1,0 +1,75 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://icon.png" type="Texture" id=1]
+[ext_resource path="res://Scripts/NPC.gd" type="Script" id=2]
+[ext_resource path="res://Scripts/DialogueBox.gd" type="Script" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 45.8166, 43.0024 )
+
+[node name="NPC" type="Area2D"]
+script = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+modulate = Color( 0.243137, 0.360784, 1, 1 )
+texture = ExtResource( 1 )
+
+[node name="Label" type="Label" parent="."]
+margin_left = -37.7976
+margin_top = -45.9871
+margin_right = 31.2024
+margin_bottom = -31.9871
+text = "[E] Interact"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DialogueBox" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="DialogueBox"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_scale = Vector2( 1.00155, 1.00293 )
+texture = ExtResource( 1 )
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="DialogueBox"]
+anchor_right = 0.955
+margin_left = -385.764
+margin_top = 43.4339
+margin_right = -237.355
+margin_bottom = 109.865
+rect_scale = Vector2( 5.38971, 3.59918 )
+bbcode_enabled = true
+bbcode_text = "testststtst"
+text = "testststtst"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tween" type="Tween" parent="DialogueBox"]
+
+[node name="Ind" type="Sprite" parent="DialogueBox"]
+modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 750.5, 218 )
+scale = Vector2( 0.47247, 0.395833 )
+texture = ExtResource( 1 )
+
+[connection signal="body_entered" from="." to="." method="_on_NPC_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_NPC_body_exited"]
+[connection signal="tween_completed" from="DialogueBox/Tween" to="DialogueBox" method="_on_Tween_tween_completed"]
